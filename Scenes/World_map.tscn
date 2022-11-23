@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/World_map.gd" type="Script" id=1]
+
+[node name="World_map" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Adventure" type="Button" parent="Buttons"]
+margin_left = 546.0
+margin_top = 281.0
+margin_right = 737.0
+margin_bottom = 330.0
+text = "Adventure"
+
+[node name="Upgrades" type="Button" parent="Buttons"]
+margin_left = 168.0
+margin_top = 148.0
+margin_right = 359.0
+margin_bottom = 197.0
+text = "Upgrades"
+
+[node name="Shop" type="Button" parent="Buttons"]
+margin_left = 338.0
+margin_top = 464.0
+margin_right = 529.0
+margin_bottom = 513.0
+text = "Shop"
+
+[node name="Inventory" type="Button" parent="Buttons"]
+margin_left = 78.0
+margin_top = 364.0
+margin_right = 269.0
+margin_bottom = 413.0
+text = "Inventory"
+
+[node name="HUD" type="Node" parent="."]
+
+[node name="Level" type="Label" parent="HUD"]
+margin_left = 15.0
+margin_top = 11.0
+margin_right = 77.0
+margin_bottom = 25.0
+text = "Level: 00"
+
+[node name="HP" type="Label" parent="HUD"]
+margin_left = 17.0
+margin_top = 30.0
+margin_right = 79.0
+margin_bottom = 44.0
+text = "HP: 100"
+
+[node name="Money" type="Label" parent="HUD"]
+margin_left = 16.0
+margin_top = 47.0
+margin_right = 91.0
+margin_bottom = 61.0
+text = "Money: 000"
+
+[node name="EXP" type="Label" parent="HUD"]
+margin_left = 16.0
+margin_top = 65.0
+margin_right = 91.0
+margin_bottom = 79.0
+text = "EXP: 000"
+
+[node name="Damage" type="Label" parent="HUD"]
+margin_left = 16.0
+margin_top = 83.0
+margin_right = 91.0
+margin_bottom = 97.0
+text = "Damage: 000"
+
+[connection signal="pressed" from="Buttons/Adventure" to="." method="_on_Adventure_pressed"]
+[connection signal="pressed" from="Buttons/Upgrades" to="." method="_on_Upgrades_pressed"]
+[connection signal="pressed" from="Buttons/Shop" to="." method="_on_Shop_pressed"]
+[connection signal="pressed" from="Buttons/Inventory" to="." method="_on_Inventory_pressed"]

@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Adventure.gd" type="Script" id=1]
+
+[node name="Adventure" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Do_dammage" type="Button" parent="Buttons"]
+margin_left = 23.0
+margin_top = 288.0
+margin_right = 242.0
+margin_bottom = 339.0
+text = "Do_damage"
+
+[node name="Return" type="Button" parent="Buttons"]
+margin_left = 56.0
+margin_top = 470.0
+margin_right = 275.0
+margin_bottom = 521.0
+text = "Return"
+
+[node name="HUD" type="Node" parent="."]
+
+[node name="Level" type="Label" parent="HUD"]
+margin_left = 15.0
+margin_top = 11.0
+margin_right = 77.0
+margin_bottom = 25.0
+text = "Level: 00"
+
+[node name="HP" type="Label" parent="HUD"]
+margin_left = 17.0
+margin_top = 30.0
+margin_right = 79.0
+margin_bottom = 44.0
+text = "HP: 100"
+
+[node name="Money" type="Label" parent="HUD"]
+margin_left = 16.0
+margin_top = 47.0
+margin_right = 91.0
+margin_bottom = 61.0
+text = "Money: 000"
+
+[node name="EXP" type="Label" parent="HUD"]
+margin_left = 16.0
+margin_top = 65.0
+margin_right = 91.0
+margin_bottom = 79.0
+text = "EXP: 000"
+
+[node name="Damage" type="Label" parent="HUD"]
+margin_left = 16.0
+margin_top = 83.0
+margin_right = 91.0
+margin_bottom = 97.0
+text = "Damage: 000"
+
+[node name="Enemy_HP" type="Node" parent="."]
+
+[node name="Life" type="Label" parent="Enemy_HP"]
+margin_left = 631.0
+margin_top = 209.0
+margin_right = 741.0
+margin_bottom = 223.0
+text = "Enemy Life: 1000"
+
+[connection signal="pressed" from="Buttons/Do_dammage" to="." method="_on_Do_dammage_pressed"]
+[connection signal="pressed" from="Buttons/Return" to="." method="_on_Return_pressed"]
