@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Resources/CharInfo.gd" type="Script" id=1]
+[ext_resource path="res://char_frente.png" type="Texture" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://char_costa.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 1 )
+name = "Player"
+face = ExtResource( 3 )
+front_sprite = ExtResource( 2 )
+back_sprite = ExtResource( 4 )
+lore = "A young lad looking for adventure"
