@@ -6,6 +6,7 @@ onready var back_sprite = null
 export (Resource) var char_info = null
 
 export (float) var movement_speed = 100.0
+var level = 0
 
 onready var sprite = $Sprite
 onready var animate_sprite = $AnimateSpriteTimer
@@ -13,7 +14,7 @@ onready var animate_sprite = $AnimateSpriteTimer
 func _ready():
 	front_sprite = char_info.front_sprite
 	back_sprite = char_info.back_sprite
-	
+	level = char_info.level
 	
 
 func movement():
@@ -33,6 +34,9 @@ func movement():
 				sprite.frame = 0
 			else:
 				sprite.frame+= 1
+			level+=1
+			char_info.level+=1
+			print(char_info.level)
 			animate_sprite.start()
 
 	
@@ -45,3 +49,8 @@ func _physics_process(delta):
 
 func _on_AnimateSpriteTimer_timeout():
 	pass # Replace with function body.
+
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		get_tree().change_scene("res://Scenes/Player/test.tscn")

@@ -9,3 +9,4 @@ export (Texture) var back_sprite = null
 export (PackedScene) var weapon = null
 export (String, MULTILINE) var lore = ""
 
+var level : int = 1
