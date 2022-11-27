@@ -6,10 +6,15 @@ onready var back_sprite = null
 export (Resource) var char_info = null
 
 export (float) var movement_speed = 100.0
+
+var last_movement = Vector2.UP
 var level = 0
 
 onready var sprite = $Sprite
 onready var animate_sprite = $AnimateSpriteTimer
+
+var enemy_near = []
+
 
 func _ready():
 	front_sprite = char_info.front_sprite
@@ -29,14 +34,12 @@ func movement():
 		sprite.texture = back_sprite
 	
 	if movement != Vector2.ZERO:
+		last_movement = movement
 		if animate_sprite.is_stopped():
 			if sprite.frame >= sprite.hframes - 1:
 				sprite.frame = 0
 			else:
 				sprite.frame+= 1
-			level+=1
-			char_info.level+=1
-			print(char_info.level)
 			animate_sprite.start()
 
 	
@@ -54,3 +57,31 @@ func _on_AnimateSpriteTimer_timeout():
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		get_tree().change_scene("res://Scenes/Player/test.tscn")
+
+
+func _on_EnemyDetection_body_entered(body):
+	if !enemy_near.has(body):
+		enemy_near.append(body)
+
+
+func _on_EnemyDetection_body_exited(body):
+	if enemy_near.has(body):
+		enemy_near.erase(body)
+
+func get_target():
+	if enemy_near.size()>0:
+		return enemy_near[0].global_position
+	else:
+		return Vector2.UP
+
+func get_enemy():
+	if enemy_near.size()>0:
+		return enemy_near[0]
+	else:
+		return null
+
+func get_random_target():
+	if enemy_near.size()>0:
+		return enemy_near.pick_random().global_position
+	else:
+		return Vector2.UP
