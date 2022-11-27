@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export var hp = 1000
 
-export var knockback_Recovery = 3.5
+export var knockback_Recovery = 20
 
 export var experience = 1
 
@@ -23,8 +23,9 @@ func _process(delta):
 func _physics_process(delta):
 	knockBack = knockBack.move_toward(Vector2.ZERO, knockback_Recovery)
 	
-	var direction = global_position.direction_to(player.global_position)
-	velocity = direction*10
+	#var direction = global_position.direction_to(player.global_position)
+	var direction = Vector2(5,-5)
+	velocity = direction*1
 	velocity += knockBack
 
 	

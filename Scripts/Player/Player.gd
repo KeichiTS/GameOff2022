@@ -80,8 +80,3 @@ func get_enemy():
 	else:
 		return null
 
-func get_random_target():
-	if enemy_near.size()>0:
-		return enemy_near.pick_random().global_position
-	else:
-		return Vector2.UP
