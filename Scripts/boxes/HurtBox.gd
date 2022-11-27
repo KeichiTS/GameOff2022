@@ -3,7 +3,7 @@ extends Area2D
 onready var collision = $CollisionShape2D
 onready var disable_timer = $DisableTimer
 
-export var disable_timer_amount = 0.2
+export var disable_timer_amount = 0.5
 
 signal hurt(damage, angle, knockback)
 

@@ -23,8 +23,8 @@ func _process(delta):
 func _physics_process(delta):
 	knockBack = knockBack.move_toward(Vector2.ZERO, knockback_Recovery)
 	
-	#var direction = global_position.direction_to(player.global_position)
-	var direction = Vector2(5,-5)
+	var direction = global_position.direction_to(player.global_position)
+	#var direction = Vector2(5,-5)
 	velocity = direction*1
 	velocity += knockBack
 

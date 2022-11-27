@@ -9,4 +9,5 @@ script = ExtResource( 1 )
 name = "Warrior"
 front_sprite = ExtResource( 2 )
 back_sprite = ExtResource( 3 )
+weapon = "sword"
 lore = ""

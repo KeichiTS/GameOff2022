@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Battle/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Resources/Warrior.tres" type="Resource" id=3]
 
 [node name="BattleGround" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 166, 163 )
+char_info = ExtResource( 3 )
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 314, 237 )
+position = Vector2( 740, 539 )

@@ -1,11 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Sprites/warrior_front.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Resources/Mage.tres" type="Resource" id=3]
-[ext_resource path="res://Scenes/Attack/SwordAttack.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Attack/SpellCaster.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/Attack/SpearThrower.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 36.0
@@ -29,13 +26,9 @@ hframes = 4
 wait_time = 0.2
 one_shot = true
 
-[node name="SwordAttack" parent="." instance=ExtResource( 4 )]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 7 )
 shape = SubResource( 1 )
-
-[node name="SpearThrower" parent="." instance=ExtResource( 6 )]
 
 [node name="EnemyDetection" type="Area2D" parent="."]
 collision_layer = 4
@@ -44,8 +37,6 @@ monitorable = false
 
 [node name="EnemyDetection" type="CollisionShape2D" parent="EnemyDetection"]
 shape = SubResource( 2 )
-
-[node name="SpellCaster" parent="." instance=ExtResource( 5 )]
 
 [connection signal="timeout" from="AnimateSpriteTimer" to="." method="_on_AnimateSpriteTimer_timeout"]
 [connection signal="body_entered" from="EnemyDetection" to="." method="_on_EnemyDetection_body_entered"]

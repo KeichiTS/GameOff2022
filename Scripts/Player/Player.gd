@@ -13,6 +13,12 @@ var level = 0
 onready var sprite = $Sprite
 onready var animate_sprite = $AnimateSpriteTimer
 
+var sword = load("res://Scenes/Attack/SwordAttack.tscn")
+var spell = load("res://Scenes/Attack/SpellCaster.tscn")
+var spear = load("res://Scenes/Attack/SpearThrower.tscn")
+var area = load("res://Scenes/Attack/AreaCaster.tscn")
+
+
 var enemy_near = []
 
 
@@ -20,6 +26,20 @@ func _ready():
 	front_sprite = char_info.front_sprite
 	back_sprite = char_info.back_sprite
 	level = char_info.level
+	print(char_info.weapon)
+	match char_info.weapon:
+		"sword":
+			var weapon = sword.instance()
+			add_child(weapon)
+		"spell":
+			var weapon = spell.instance()
+			add_child(weapon)
+		"spear":
+			var weapon = spear.instance()
+			add_child(weapon)
+		"area":
+			var weapon = area.instance()
+			add_child(weapon)
 	
 
 func movement():
