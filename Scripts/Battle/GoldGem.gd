@@ -1,7 +1,7 @@
 extends Area2D
 
-export var experience = 1
-export var type = "exp"
+export var gold = 10
+export var type = "gold"
 var target = null
 var speed = -1
 
@@ -13,7 +13,7 @@ func _physics_process(delta):
 func collected():
 	$CollisionShape2D.call_deferred("set","disabled",true)
 	$Timer.start()
-	return experience
+	return gold
 	
 
 

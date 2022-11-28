@@ -7,6 +7,7 @@ var Money = 600
 var EXP = 300
 var Damage = 1
 
+var Party_member : CharInfo = load("res://Resources/Mage.tres")
 
 #Equip values
 var Equip1 = false

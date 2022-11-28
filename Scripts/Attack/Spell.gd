@@ -22,8 +22,11 @@ func _ready():
 	
 
 func _physics_process(delta):
-	angle = global_position.direction_to(target.global_position)
-	position += angle*speed*delta
+	if is_instance_valid(target):
+		angle = global_position.direction_to(target.global_position)
+		position += angle*speed*delta
+	else:
+		queue_free()
 	
 func enemy_hit(charge = 1):
 	hp-=charge

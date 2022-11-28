@@ -17,6 +17,7 @@ var velocity = Vector2.ZERO
 var knockBack = Vector2.ZERO
 
 var exp_gem = preload("res://Scenes/Battle/ExpGem.tscn")
+var gold_coin = preload("res://Scenes/Battle/GoldGem.tscn")
 
 func _ready():
 	$Label.text = str(hp)
@@ -46,6 +47,9 @@ func death():
 	new_gem.global_position = global_position
 	new_gem.experience = experience
 	loot_base.call_deferred("add_child",new_gem)
+	var new_gold = gold_coin.instance()
+	new_gold.global_position = global_position + Vector2(rand_range(0,10),rand_range(0,10))*2 
+	loot_base.call_deferred("add_child",new_gold)
 	queue_free()
 
 func _on_HurtBox_hurt(damage, angle, knockback):

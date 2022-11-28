@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Sprites/warrior_front.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=2]
-[ext_resource path="res://Resources/Mage.tres" type="Resource" id=3]
 [ext_resource path="res://Scenes/boxes/HurtBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Sprites/exp_Grid.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/exp_fill.png" type="Texture" id=6]
@@ -27,7 +26,6 @@ radius = 56.0892
 collision_layer = 3
 collision_mask = 3
 script = ExtResource( 2 )
-char_info = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
@@ -107,6 +105,13 @@ margin_top = 36.0
 margin_right = 57.0
 margin_bottom = 50.0
 text = "LvL"
+
+[node name="Money" type="Label" parent="GUI/Control"]
+margin_left = 59.0
+margin_top = 36.0
+margin_right = 194.0
+margin_bottom = 50.0
+text = "Money"
 
 [connection signal="timeout" from="AnimateSpriteTimer" to="." method="_on_AnimateSpriteTimer_timeout"]
 [connection signal="body_entered" from="EnemyDetection" to="." method="_on_EnemyDetection_body_entered"]

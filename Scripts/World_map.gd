@@ -9,7 +9,7 @@ func _ready():
 
 
 func _on_Adventure_pressed():
-	get_tree().change_scene("res://Scenes/Adventure.tscn")
+	get_tree().change_scene("res://Scenes/Battle/BattleGround.tscn")
 
 
 func _on_Upgrades_pressed():

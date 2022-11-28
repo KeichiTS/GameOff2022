@@ -2,11 +2,11 @@ extends KinematicBody2D
 
 onready var front_sprite = null
 onready var back_sprite = null
-onready var hp = 1000
+onready var hp = 10
 
 
 
-export (Resource) var char_info = null
+var char_info = null
 
 export (float) var movement_speed = 100.0
 
@@ -14,7 +14,7 @@ var last_movement = Vector2.UP
 var level = 0
 var experience = 0
 var exp_to_next_level = 0
-var gold
+var gold = 0
 
 onready var sprite = $Sprite
 onready var animate_sprite = $AnimateSpriteTimer
@@ -29,6 +29,8 @@ var enemy_near = []
 
 
 func _ready():
+	char_info = PLAYER.Party_member
+	
 	front_sprite = char_info.front_sprite
 	back_sprite = char_info.back_sprite
 	level = char_info.level
@@ -51,6 +53,7 @@ func _ready():
 	$GUI/Control/Label.text = str("Lvl: ",level)
 	$GUI/Control/TextureProgress.max_value = exp_to_next_level
 	$GUI/Control/TextureProgress.value = experience
+	$GUI/Control/Money.text = str("Money : ",gold)
 
 func movement():
 	var horizontal_move = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -114,7 +117,9 @@ func get_enemy():
 
 func _on_HurtBox_hurt(damage, _angle, _knockback):
 	hp-=damage
-	print("Player hp: ",hp)
+	if hp >= 0:
+		PLAYER.Money+= gold
+		get_tree().change_scene("res://Scenes/World_map.tscn")
 
 
 func exp_to_lvlup(level):
@@ -128,18 +133,23 @@ func _on_GrabLoot_area_entered(area):
 
 func _on_ColectLoot_area_entered(area):
 	if area.is_in_group("loot"):
-		var gem_exp = area.collected()
-		experience+= gem_exp
-	
-		$GUI/Control/TextureProgress.value = experience
-			
-		print("Exp :", experience, " LVL :", level)
-		if experience >= exp_to_next_level:
-			level+=1
-			var diff = experience - exp_to_next_level
-			experience = diff
-			exp_to_next_level = exp_to_lvlup(level)
-			
-			$GUI/Control/Label.text = str("Lvl: ",level)
-			$GUI/Control/TextureProgress.max_value = exp_to_next_level
+		if area.type == "exp":
+			var gem_exp = area.collected()
+			experience+= gem_exp
+		
 			$GUI/Control/TextureProgress.value = experience
+				
+			print("Exp :", experience, " LVL :", level)
+			if experience >= exp_to_next_level:
+				level+=1
+				var diff = experience - exp_to_next_level
+				experience = diff
+				exp_to_next_level = exp_to_lvlup(level)
+				
+				$GUI/Control/Label.text = str("Lvl: ",level)
+				$GUI/Control/TextureProgress.max_value = exp_to_next_level
+				$GUI/Control/TextureProgress.value = experience
+		if area.type == "gold":
+			var gold_gained = area.collected()
+			gold += gold_gained
+			$GUI/Control/Money.text = str("Money : ",gold)

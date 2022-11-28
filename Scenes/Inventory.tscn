@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Inventory.gd" type="Script" id=1]
 [ext_resource path="res://Font/tenderness.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/Party.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 outline_color = Color( 0, 0, 0, 1 )
@@ -126,7 +127,39 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "Damage: 000"
 
+[node name="PartyMember" type="Label" parent="HUD"]
+margin_left = 20.0
+margin_top = 104.0
+margin_right = 60.0
+margin_bottom = 118.0
+text = "[Party member]"
+
+[node name="Party" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="Warrior" type="Button" parent="Party"]
+margin_left = 201.0
+margin_top = 117.0
+margin_right = 364.0
+margin_bottom = 167.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+text = "Warrior"
+
+[node name="Mage" type="Button" parent="Party"]
+margin_left = 427.0
+margin_top = 117.0
+margin_right = 590.0
+margin_bottom = 167.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
+text = "Mage"
+
 [connection signal="pressed" from="Buttons/Return" to="." method="_on_Return_pressed"]
 [connection signal="pressed" from="Buttons/Equip_1" to="." method="_on_Equip_1_pressed"]
 [connection signal="pressed" from="Buttons/Equip_2" to="." method="_on_Equip_2_pressed"]
 [connection signal="pressed" from="Buttons/Equip_3" to="." method="_on_Equip_3_pressed"]
+[connection signal="pressed" from="Party/Warrior" to="Party" method="_on_Warrior_pressed"]
+[connection signal="pressed" from="Party/Mage" to="Party" method="_on_Mage_pressed"]
