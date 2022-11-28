@@ -30,7 +30,8 @@ func _on_HurtBox_area_entered(area):
 			print(damage)
 			if area.has_method("enemy_hit"):
 				area.enemy_hit(1)
-
+			if area.has_method("tempdisable"):
+				area.tempdisable()
 
 
 func _on_DisableTimer_timeout():

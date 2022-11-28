@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 onready var front_sprite = null
 onready var back_sprite = null
+onready var hp = 1000
+
 
 export (Resource) var char_info = null
 
@@ -100,3 +102,8 @@ func get_enemy():
 	else:
 		return null
 
+
+
+func _on_HurtBox_hurt(damage, _angle, _knockback):
+	hp-=damage
+	print("Player hp: ",hp)

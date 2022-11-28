@@ -8,6 +8,8 @@ export var experience = 1
 
 onready var player = null
 
+export var enemy_movement := 20
+
 var velocity = Vector2.ZERO
 
 var knockBack = Vector2.ZERO
@@ -25,7 +27,7 @@ func _physics_process(delta):
 	
 	var direction = global_position.direction_to(player.global_position)
 	#var direction = Vector2(5,-5)
-	velocity = direction*1
+	velocity = direction*enemy_movement
 	velocity += knockBack
 
 	

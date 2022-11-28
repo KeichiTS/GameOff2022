@@ -6,7 +6,7 @@ onready var collision = $CollisionShape2D
 onready var sprite = $Sprite
 
 var damage = 10
-var knockback_amount = 100
+var knockback_amount = 200
 var angle = Vector2.ZERO
 
 
