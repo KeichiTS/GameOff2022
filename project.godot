@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "CharInfo",
 "language": "GDScript",
 "path": "res://Resources/CharInfo.gd"
+}, {
+"base": "Resource",
+"class": "SpawnInfo",
+"language": "GDScript",
+"path": "res://Resources/SpawnInfo.gd"
 } ]
 _global_script_class_icons={
-"CharInfo": ""
+"CharInfo": "",
+"SpawnInfo": ""
 }
 
 [application]

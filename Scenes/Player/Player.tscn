@@ -49,6 +49,11 @@ collision_mask = 2
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource( 3 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 1.5, 1.5 )
+smoothing_enabled = true
+
 [connection signal="timeout" from="AnimateSpriteTimer" to="." method="_on_AnimateSpriteTimer_timeout"]
 [connection signal="body_entered" from="EnemyDetection" to="." method="_on_EnemyDetection_body_entered"]
 [connection signal="body_exited" from="EnemyDetection" to="." method="_on_EnemyDetection_body_exited"]

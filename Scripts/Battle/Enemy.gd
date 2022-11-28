@@ -17,7 +17,7 @@ var knockBack = Vector2.ZERO
 func _ready():
 	$Label.text = str(hp)
 	player = get_parent().find_node("Player",true)
-	print(player)
+
 	
 func _process(delta):
 	$Label.text = str(hp)
@@ -35,9 +35,12 @@ func _physics_process(delta):
 	
 	move_and_slide(velocity)
 	
-	
+
+func death():
+	queue_free()
 
 func _on_HurtBox_hurt(damage, angle, knockback):
 	hp -= damage
 	knockBack = -global_position.direction_to(player.global_position)*knockback
-
+	if hp <= 0:
+		death()

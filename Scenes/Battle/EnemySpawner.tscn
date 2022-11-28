@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Battle/EnemySpawner.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Slime.tres" type="Resource" id=2]
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource( 1 )
+spawns = [ ExtResource( 2 ) ]
+
+[node name="Time" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Time" to="." method="_on_Time_timeout"]
