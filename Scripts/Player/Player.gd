@@ -5,12 +5,16 @@ onready var back_sprite = null
 onready var hp = 1000
 
 
+
 export (Resource) var char_info = null
 
 export (float) var movement_speed = 100.0
 
 var last_movement = Vector2.UP
 var level = 0
+var experience = 0
+var exp_to_next_level = 0
+var gold
 
 onready var sprite = $Sprite
 onready var animate_sprite = $AnimateSpriteTimer
@@ -28,6 +32,7 @@ func _ready():
 	front_sprite = char_info.front_sprite
 	back_sprite = char_info.back_sprite
 	level = char_info.level
+	exp_to_next_level = exp_to_lvlup(level)
 	print(char_info.weapon)
 	match char_info.weapon:
 		"sword":
@@ -43,6 +48,9 @@ func _ready():
 			var weapon = area.instance()
 			add_child(weapon)
 	
+	$GUI/Control/Label.text = str("Lvl: ",level)
+	$GUI/Control/TextureProgress.max_value = exp_to_next_level
+	$GUI/Control/TextureProgress.value = experience
 
 func movement():
 	var horizontal_move = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -107,3 +115,31 @@ func get_enemy():
 func _on_HurtBox_hurt(damage, _angle, _knockback):
 	hp-=damage
 	print("Player hp: ",hp)
+
+
+func exp_to_lvlup(level):
+	return level*10
+
+
+func _on_GrabLoot_area_entered(area):
+	if area.is_in_group("loot"):
+		area.target = self
+
+
+func _on_ColectLoot_area_entered(area):
+	if area.is_in_group("loot"):
+		var gem_exp = area.collected()
+		experience+= gem_exp
+	
+		$GUI/Control/TextureProgress.value = experience
+			
+		print("Exp :", experience, " LVL :", level)
+		if experience >= exp_to_next_level:
+			level+=1
+			var diff = experience - exp_to_next_level
+			experience = diff
+			exp_to_next_level = exp_to_lvlup(level)
+			
+			$GUI/Control/Label.text = str("Lvl: ",level)
+			$GUI/Control/TextureProgress.max_value = exp_to_next_level
+			$GUI/Control/TextureProgress.value = experience

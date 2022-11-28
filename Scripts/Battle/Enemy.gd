@@ -8,15 +8,20 @@ export var experience = 1
 
 onready var player = null
 
+onready var loot_base = null
+
 export var enemy_movement := 20
 
 var velocity = Vector2.ZERO
 
 var knockBack = Vector2.ZERO
 
+var exp_gem = preload("res://Scenes/Battle/ExpGem.tscn")
+
 func _ready():
 	$Label.text = str(hp)
 	player = get_parent().find_node("Player",true)
+	loot_base = get_parent().find_node("Loot",true)
 
 	
 func _process(delta):
@@ -37,6 +42,10 @@ func _physics_process(delta):
 	
 
 func death():
+	var new_gem = exp_gem.instance()
+	new_gem.global_position = global_position
+	new_gem.experience = experience
+	loot_base.call_deferred("add_child",new_gem)
 	queue_free()
 
 func _on_HurtBox_hurt(damage, angle, knockback):
