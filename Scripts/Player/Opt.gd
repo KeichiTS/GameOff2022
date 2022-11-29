@@ -14,6 +14,8 @@ func _ready():
 func get_option():
 	#var upgrade = UPgrades.choose_upgrade(player, player.upgrades)
 	var upgrade = UPgrades.choose_upgrade(player, player.upgrades)
+	if player.upgrades_lvl[upgrade] >= 5:
+		upgrade = "health"
 	text = upgrade
 	upgrade_to_choose = upgrade
 

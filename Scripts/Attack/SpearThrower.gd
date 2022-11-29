@@ -8,7 +8,7 @@ var spell = preload("res://Scenes/Attack/Spear.tscn")
 var spell_level = 1
 var spell_ammo = 1
 var spell_baseamo = 1
-var spell_casttime = 1
+var spell_casttime = 2.5
 var spell_charge_time = 1
 
 
