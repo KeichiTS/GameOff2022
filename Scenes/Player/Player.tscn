@@ -137,14 +137,16 @@ custom_constants/separation = 10
 alignment = 1
 
 [node name="Opt" parent="GUI/LvlUp/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 32.0
-margin_bottom = 92.0
+margin_top = 31.0
+margin_bottom = 91.0
 
 [node name="Opt2" parent="GUI/LvlUp/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 101.0
+margin_bottom = 161.0
 
 [node name="Opt3" parent="GUI/LvlUp/VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 172.0
-margin_bottom = 232.0
+margin_top = 171.0
+margin_bottom = 231.0
 
 [connection signal="timeout" from="AnimateSpriteTimer" to="." method="_on_AnimateSpriteTimer_timeout"]
 [connection signal="body_entered" from="EnemyDetection" to="." method="_on_EnemyDetection_body_entered"]

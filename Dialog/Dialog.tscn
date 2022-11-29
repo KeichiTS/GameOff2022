@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Dialog/Dialog_box.gd" type="Script" id=1]
+[ext_resource path="res://Font/tenderness.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Dialog/dialog-background.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Control" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Dialog_box" type="Control" parent="."]
+margin_top = 200.0
+margin_right = 720.0
+margin_bottom = 357.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="TextureRect" type="TextureRect" parent="Dialog_box"]
+anchor_left = 0.5
+anchor_top = 2.264
+anchor_right = 0.5
+anchor_bottom = 2.264
+margin_left = -359.0
+margin_top = -355.448
+margin_right = 359.0
+margin_bottom = -198.448
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Dialog_box"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -6.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 1 )
+text = "Aperte Espaço"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Dialog_box"]
+
+[node name="wait_timer" type="Timer" parent="Dialog_box"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 629.701, 113.369 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 4 )
+playing = true
+
+[connection signal="timeout" from="Dialog_box/wait_timer" to="Dialog_box" method="_on_wait_timer_timeout"]

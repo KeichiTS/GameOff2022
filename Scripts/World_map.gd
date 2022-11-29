@@ -1,5 +1,7 @@
 extends Node
 
+var on_dialog = true 
+
 func _ready():
 	$HUD/Level.text = "Level: " + str(PLAYER.Level)
 	$HUD/HP.text = "HP: " + str(PLAYER.HP)
@@ -7,6 +9,12 @@ func _ready():
 	$HUD/EXP.text = "EXP: " + str(PLAYER.EXP)
 	$HUD/Damage.text = "Damage: " + str(PLAYER.Damage)
 
+
+	if on_dialog == true:
+		$Buttons/Adventure.disabled = true
+		$Buttons/Inventory.disabled = true
+		$Buttons/Shop.disabled = true
+		$Buttons/Upgrades.disabled = true 
 
 func _on_Adventure_pressed():
 	get_tree().change_scene("res://Scenes/Battle/BattleGround.tscn")
@@ -22,3 +30,10 @@ func _on_Shop_pressed():
 
 func _on_Inventory_pressed():
 	get_tree().change_scene("res://Scenes/Inventory.tscn")
+
+
+func active_buttons(): 
+		$Buttons/Adventure.disabled = false
+		$Buttons/Inventory.disabled = false
+		$Buttons/Shop.disabled = false
+		$Buttons/Upgrades.disabled = false
