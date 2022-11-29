@@ -182,7 +182,7 @@ func level_up(upgrade):
 	if upgrade != "health":
 		if upgrades.has(upgrade) and upgrades_lvl[upgrade] < 5:
 			upgrades_lvl[upgrade]+=1
-			update_stats()
+			update_stats(upgrade)
 		else:
 			upgrades.append(upgrade)
 	else:
@@ -190,5 +190,89 @@ func level_up(upgrade):
 		hp = clamp(hp,hp,100)
 	print(upgrades)
 
-func update_stats():
-	pass
+func update_stats(upgrade):
+	match upgrade:
+		"sword":
+			match upgrades_lvl[upgrade]:
+				1:
+					pass
+				2:
+					pass
+				3:
+					pass
+				4:
+					pass
+				5:
+					pass
+		"spell":
+			match upgrades_lvl[upgrade]:
+				1:
+					pass
+				2:
+					pass
+				3:
+					pass
+				4:
+					pass
+				5:
+					pass
+		"spear":
+			match upgrades_lvl[upgrade]:
+				1:
+					pass
+				2:
+					pass
+				3:
+					pass
+				4:
+					pass
+				5:
+					pass
+		"area":
+			match upgrades_lvl[upgrade]:
+				1:
+					pass
+				2:
+					pass
+				3:
+					pass
+				4:
+					pass
+				5:
+					pass
+		"area_size":
+			match upgrades_lvl[upgrade]:
+				1:
+					pass
+				2:
+					pass
+				3:
+					pass
+				4:
+					pass
+				5:
+					pass
+		"boots":
+			match upgrades_lvl[upgrade]:
+				1:
+					pass
+				2:
+					pass
+				3:
+					pass
+				4:
+					pass
+				5:
+					pass
+		"armor":
+			match upgrades_lvl[upgrade]:
+				1:
+					pass
+				2:
+					pass
+				3:
+					pass
+				4:
+					pass
+				5:
+					pass
