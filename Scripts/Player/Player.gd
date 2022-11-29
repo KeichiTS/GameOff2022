@@ -327,13 +327,41 @@ func update_stats(upgrade):
 						var weapon = area.instance()
 						add_child(weapon)
 				2:
-					pass
+					if get_node("AreaCaster"):
+						var areacaster = get_node("AreaCaster")
+						areacaster.basecharges = 1
+						areacaster.casttime = 5
+						areacaster.chargetime = 5
+						areacaster.speed = 1
+						areacaster.area_size = 2
+						areacaster.damage = 50
 				3:
-					pass
+					if get_node("AreaCaster"):
+						var areacaster = get_node("AreaCaster")
+						areacaster.basecharges = 5
+						areacaster.casttime = 2
+						areacaster.chargetime = 2
+						areacaster.speed = .8
+						areacaster.area_size = 2
+						areacaster.damage = 50
 				4:
-					pass
+					if get_node("AreaCaster"):
+						var areacaster = get_node("AreaCaster")
+						areacaster.basecharges = 5
+						areacaster.casttime = 2
+						areacaster.chargetime = 2
+						areacaster.speed = .5
+						areacaster.area_size = 2
+						areacaster.damage = 100
 				5:
-					pass
+					if get_node("AreaCaster"):
+						var areacaster = get_node("AreaCaster")
+						areacaster.basecharges = 5
+						areacaster.casttime = 2
+						areacaster.chargetime = 2
+						areacaster.speed = .3
+						areacaster.area_size = 4
+						areacaster.damage = 100
 		
 		"boots":
 			match upgrades_lvl[upgrade]:

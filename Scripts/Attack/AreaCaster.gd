@@ -4,6 +4,9 @@ var charges = 0
 var basecharges = 1
 var casttime = 5
 var chargetime = 5
+var speed = 1
+var area_size = 1
+var damage = 50
 
 var area_to_Cast = preload("res://Scenes/Attack/AreaMagic.tscn")
 var player = null
@@ -35,6 +38,9 @@ func _on_CastTimer_timeout():
 		
 		var area = area_to_Cast.instance()
 		area.position = Vector2(posx, posy)
+		area.speed = speed
+		area.area_size = area_size
+		area.damage = damage
 		add_child(area)
 		area.set_as_toplevel(true)
 		charges-=1

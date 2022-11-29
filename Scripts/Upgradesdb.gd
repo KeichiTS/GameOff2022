@@ -25,10 +25,11 @@ func choose_upgrade(player, player_upgrades : Array):
 		return upgrade
 		
 	else:
-		possible_upgrades = player_upgrades
-		possible_upgrades.append("health")
-		possible_upgrades.shuffle()
-		upgrade = possible_upgrades[0]
+		var possible_updates2 = ["health"]
+		for itens in player_upgrades:
+			possible_updates2.append(itens)
+		possible_updates2.shuffle()
+		upgrade = possible_updates2[0]
 				
 		return upgrade
 
