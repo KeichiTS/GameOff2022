@@ -186,7 +186,7 @@ func level_up(upgrade):
 		upgrades_lvl[upgrade]+=1
 		if upgrades_lvl[upgrade] < 5:
 			update_stats(upgrade)
-		if !upgrades.has(upgrade):
+		if !upgrades.has(upgrade) and upgrade != "health":
 			upgrades.append(upgrade)
 			
 	print(upgrades)
