@@ -33,6 +33,11 @@ func _physics_process(delta):
 	
 	var direction = global_position.direction_to(player.global_position)
 	#var direction = Vector2(5,-5)
+	if direction.x > 0.1:
+		$Sprite.flip_h = true
+	elif direction.x < -0.1:
+		$Sprite.flip_h = false
+		
 	velocity = direction*enemy_movement
 	velocity += knockBack
 

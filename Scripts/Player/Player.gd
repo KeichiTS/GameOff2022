@@ -3,7 +3,7 @@ extends KinematicBody2D
 onready var front_sprite = null
 onready var back_sprite = null
 onready var hp = 10
-
+var armor = 0
 
 
 var char_info = null
@@ -15,6 +15,8 @@ var level = 0
 var experience = 0
 var exp_to_next_level = 0
 var gold = 0
+
+var upgrades = []
 
 onready var sprite = $Sprite
 onready var animate_sprite = $AnimateSpriteTimer
@@ -40,15 +42,19 @@ func _ready():
 		"sword":
 			var weapon = sword.instance()
 			add_child(weapon)
+			upgrades.append("sword")
 		"spell":
 			var weapon = spell.instance()
 			add_child(weapon)
+			upgrades.append("spell")
 		"spear":
 			var weapon = spear.instance()
 			add_child(weapon)
+			upgrades.append("spear")
 		"area":
 			var weapon = area.instance()
 			add_child(weapon)
+			upgrades.append("area")
 	
 	$GUI/Control/Label.text = str("Lvl: ",level)
 	$GUI/Control/TextureProgress.max_value = exp_to_next_level
@@ -116,7 +122,7 @@ func get_enemy():
 
 
 func _on_HurtBox_hurt(damage, _angle, _knockback):
-	hp-=damage
+	hp-=clamp(damage - armor, 1, damage)
 	if hp >= 0:
 		PLAYER.Money+= gold
 		get_tree().change_scene("res://Scenes/World_map.tscn")

@@ -8,7 +8,8 @@ var spell = preload("res://Scenes/Attack/Spear.tscn")
 var spell_level = 1
 var spell_ammo = 1
 var spell_baseamo = 1
-var spell_casttime = .2
+var spell_casttime = 1
+var spell_charge_time = 1
 
 
 func _ready():
@@ -16,6 +17,7 @@ func _ready():
 
 func cast():
 	$ThrowTimer.wait_time = spell_casttime
+	$ChargeTimer.wait_time = spell_charge_time
 	$ThrowTimer.start()
 	$ChargeTimer.start()
 

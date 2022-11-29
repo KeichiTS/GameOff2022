@@ -33,6 +33,7 @@ config/icon="res://icon.png"
 [autoload]
 
 PLAYER="*res://Scripts/PLAYER.gd"
+UPgrades="*res://Scripts/Upgradesdb.gd"
 
 [display]
 

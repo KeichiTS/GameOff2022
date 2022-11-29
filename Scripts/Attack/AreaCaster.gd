@@ -3,7 +3,7 @@ extends Node2D
 var charges = 0
 var basecharges = 1
 var casttime = 5
-var chargetime = 1.2
+var chargetime = 5
 
 var area_to_Cast = preload("res://Scenes/Attack/AreaMagic.tscn")
 
