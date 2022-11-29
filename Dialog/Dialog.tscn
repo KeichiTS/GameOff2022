@@ -75,6 +75,7 @@ visible = false
 position = Vector2( 629.701, 113.369 )
 scale = Vector2( 5, 5 )
 frames = SubResource( 4 )
+frame = 1
 playing = true
 
 [connection signal="timeout" from="Dialog_box/wait_timer" to="Dialog_box" method="_on_wait_timer_timeout"]
