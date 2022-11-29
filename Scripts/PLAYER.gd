@@ -19,5 +19,9 @@ var Buy_Equip1 = false
 var Buy_Equip2 = false
 var Buy_Equip3 = false
 
+#Dialog values
+var dialog_to_show = 0 
+var dialog_showed = 0 
+
 func _ready():
 	pass

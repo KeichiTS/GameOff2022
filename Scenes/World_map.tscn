@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/World_map.gd" type="Script" id=1]
 [ext_resource path="res://Font/tenderness.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Dialog/Dialog_box.gd" type="Script" id=3]
+[ext_resource path="res://Dialog/dialog-background.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 outline_color = Color( 0, 0, 0, 1 )
@@ -25,6 +27,10 @@ expand_margin_bottom = 4.0
 shadow_color = Color( 0, 0, 0, 0.690196 )
 shadow_size = 3
 shadow_offset = Vector2( 2, 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 2 )
 
 [node name="World_map" type="Node"]
 script = ExtResource( 1 )
@@ -123,7 +129,49 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Damage: 000"
 
+[node name="Dialog_box" type="Control" parent="."]
+margin_left = 36.0
+margin_top = 428.0
+margin_right = 756.0
+margin_bottom = 585.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="wait_timer" type="Timer" parent="Dialog_box"]
+
+[node name="TextureRect" type="TextureRect" parent="Dialog_box"]
+anchor_left = 0.5
+anchor_top = 2.264
+anchor_right = 0.5
+anchor_bottom = 2.264
+margin_left = -359.0
+margin_top = -355.448
+margin_right = 359.0
+margin_bottom = -198.448
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Dialog_box"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -6.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 3 )
+text = "Aperte Espaço"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Dialog_box"]
+
 [connection signal="pressed" from="Buttons/Adventure" to="." method="_on_Adventure_pressed"]
 [connection signal="pressed" from="Buttons/Upgrades" to="." method="_on_Upgrades_pressed"]
 [connection signal="pressed" from="Buttons/Shop" to="." method="_on_Shop_pressed"]
 [connection signal="pressed" from="Buttons/Inventory" to="." method="_on_Inventory_pressed"]
+[connection signal="timeout" from="Dialog_box/wait_timer" to="Dialog_box" method="_on_wait_timer_timeout"]
