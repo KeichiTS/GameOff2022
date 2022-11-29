@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 onready var front_sprite = null
 onready var back_sprite = null
-onready var hp = 10
+onready var hp = 100
 var armor = 0
 
 
@@ -15,6 +15,19 @@ var level = 0
 var experience = 0
 var exp_to_next_level = 0
 var gold = 0
+
+
+var upgrades_lvl = {
+	"sword":0, 
+	"spell":0,
+	"spear":0,
+	"area":0,
+	"healt":0,
+	"area_size":0,
+	"boots":0,
+	"armor":0
+}
+
 
 var upgrades = []
 
@@ -55,6 +68,8 @@ func _ready():
 			var weapon = area.instance()
 			add_child(weapon)
 			upgrades.append("area")
+	upgrades_lvl[char_info.weapon]+=1
+	print(upgrades_lvl[char_info.weapon])
 	
 	$GUI/Control/Label.text = str("Lvl: ",level)
 	$GUI/Control/TextureProgress.max_value = exp_to_next_level
@@ -93,9 +108,6 @@ func _on_AnimateSpriteTimer_timeout():
 	pass # Replace with function body.
 
 
-func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		get_tree().change_scene("res://Scenes/Player/test.tscn")
 
 
 func _on_EnemyDetection_body_entered(body):
@@ -120,10 +132,10 @@ func get_enemy():
 		return null
 
 
-
 func _on_HurtBox_hurt(damage, _angle, _knockback):
-	hp-=clamp(damage - armor, 1, damage)
-	if hp >= 0:
+	hp-=damage
+	print(hp)
+	if hp <= 0:
 		PLAYER.Money+= gold
 		get_tree().change_scene("res://Scenes/World_map.tscn")
 
@@ -155,7 +167,22 @@ func _on_ColectLoot_area_entered(area):
 				$GUI/Control/Label.text = str("Lvl: ",level)
 				$GUI/Control/TextureProgress.max_value = exp_to_next_level
 				$GUI/Control/TextureProgress.value = experience
+				
+				$GUI/LvlUp.popup_centered()
+				for i in $GUI/LvlUp/VBoxContainer.get_children():
+					i.get_option()
+				get_tree().paused = true
+				
 		if area.type == "gold":
 			var gold_gained = area.collected()
 			gold += gold_gained
 			$GUI/Control/Money.text = str("Money : ",gold)
+
+func level_up(upgrade):
+	if upgrade != "health":
+		upgrades.append(upgrade)
+	else:
+		hp+=20
+		hp = clamp(hp,hp,100)
+	print(upgrades)
+

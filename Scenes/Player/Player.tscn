@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Sprites/warrior_front.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Player/Opt.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/boxes/HurtBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Sprites/exp_Grid.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/exp_fill.png" type="Texture" id=6]
@@ -112,6 +113,38 @@ margin_top = 36.0
 margin_right = 194.0
 margin_bottom = 50.0
 text = "Money"
+
+[node name="LvlUp" type="PopupPanel" parent="GUI"]
+pause_mode = 2
+visible = true
+anchor_left = 0.17
+anchor_top = 0.0666667
+anchor_right = 0.83
+anchor_bottom = 0.52
+popup_exclusive = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/LvlUp"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+custom_constants/separation = 10
+alignment = 1
+
+[node name="Opt" parent="GUI/LvlUp/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 32.0
+margin_bottom = 92.0
+
+[node name="Opt2" parent="GUI/LvlUp/VBoxContainer" instance=ExtResource( 3 )]
+
+[node name="Opt3" parent="GUI/LvlUp/VBoxContainer" instance=ExtResource( 3 )]
+margin_top = 172.0
+margin_bottom = 232.0
 
 [connection signal="timeout" from="AnimateSpriteTimer" to="." method="_on_AnimateSpriteTimer_timeout"]
 [connection signal="body_entered" from="EnemyDetection" to="." method="_on_EnemyDetection_body_entered"]

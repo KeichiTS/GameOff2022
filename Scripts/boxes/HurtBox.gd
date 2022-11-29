@@ -24,10 +24,8 @@ func _on_HurtBox_area_entered(area):
 				knockback = area.knockback_amount
 				
 			emit_signal("hurt",damage, angle, knockback)
-			print(damage)
 			collision.call_deferred('set','disabled',true)
 			disable_timer.start()
-			print(damage)
 			if area.has_method("enemy_hit"):
 				area.enemy_hit(1)
 			if area.has_method("tempdisable"):

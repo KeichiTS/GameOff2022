@@ -4,7 +4,7 @@ onready var player = get_parent()
 onready var collision = $CollisionShape2D
 onready var sprite = $Sprite
 
-var damage = 10
+var damage = 20
 var knockback_amount = 0
 var target = Vector2.ZERO
 var angle = Vector2.ZERO

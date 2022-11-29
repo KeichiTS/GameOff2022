@@ -1,58 +1,37 @@
 extends Node
 
-var upgrades  = {
-	"sword":{
-		"lvl1":{},
-		"lvl2":{},
-		"lvl3":{},
-		"lvl4":{},
-		"lvl5":{}
-	},
-	"spell":{
-		"lvl1":{},
-		"lvl2":{},
-		"lvl3":{},
-		"lvl4":{},
-		"lvl5":{}
-	},
-	"spear":{
-		"lvl1":{},
-		"lvl2":{},
-		"lvl3":{},
-		"lvl4":{},
-		"lvl5":{}
-	},
-	"area":{
-		"lvl1":{},
-		"lvl2":{},
-		"lvl3":{},
-		"lvl4":{},
-		"lvl5":{}
-	},
-	"area_size":{
-		"lvl1":{},
-		"lvl2":{},
-		"lvl3":{},
-		"lvl4":{},
-		"lvl5":{}
-	},
-	"health":{
+var upgrades  = [
+	"sword", 
+	"spell",
+	"spear",
+	"area",
+	"area_size",
+	"health",
+	"boots",
+	"armor"
+]
+
+
+
+func choose_upgrade(player, player_upgrades : Array):
+
+	randomize()	
+	var possible_upgrades = upgrades
+	possible_upgrades.shuffle()
+	var upgrade = possible_upgrades[0]
+	
+	if player.upgrades_lvl[upgrade] >= 5:
+		possible_upgrades.erase(upgrade)
+		upgrade = "health"		
+	
+	if player_upgrades.size() < 4:
+		return upgrade
 		
-	},
-	"boots":{
-		"lvl1":{},
-		"lvl2":{},
-		"lvl3":{},
-		"lvl4":{},
-		"lvl5":{}
-	},
-	"armor":{"lvl1":{},
-		"lvl2":{},
-		"lvl3":{},
-		"lvl4":{},
-		"lvl5":{}}
-}
-
-
-func choose_upgrade(player, upgrades):
-	pass
+	else:
+		player_upgrades.shuffle()
+		upgrade = player_upgrades[0]
+		if !player.upgrades_lvl[player_upgrades[0]] < 5:
+			player_upgrades.shuffle()
+		upgrade = player_upgrades[0]
+		
+		return upgrade
