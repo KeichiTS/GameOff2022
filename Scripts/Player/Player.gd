@@ -182,14 +182,14 @@ func level_up(upgrade):
 	if upgrade == "health":
 		hp+=20
 		hp = clamp(hp,hp,100)
-	else:
+	elif upgrade != "health":
 		upgrades_lvl[upgrade]+=1
 		if upgrades_lvl[upgrade] < 5:
 			update_stats(upgrade)
-		if !upgrades.has(upgrade) and upgrade != "health":
+		if !upgrades.has(upgrade):
 			upgrades.append(upgrade)
-			
-	print(upgrades)
+	
+	print(upgrades)			
 
 
 func update_stats(upgrade):
@@ -296,6 +296,7 @@ func update_stats(upgrade):
 						spell1.spell_charge_time = 1
 						spell1.spell_damage = 30
 						spell1.spell_knockback = 10
+						spell1.spear_speed = 150
 				4:
 					if get_node("SpearThrower"):
 						var spell1 = get_node("SpearThrower")
@@ -305,7 +306,8 @@ func update_stats(upgrade):
 						spell1.spell_charge_time = 1
 						spell1.spell_damage = 50
 						spell1.spell_knockback = 10
-						spell1.hp = 2
+						spell1.spell_hp = 2
+						spell1.spear_speed = 250
 				5:
 					if get_node("SpearThrower"):
 						var spell1 = get_node("SpearThrower")
@@ -315,7 +317,8 @@ func update_stats(upgrade):
 						spell1.spell_damage = 100
 						spell1.spell_knockback = 200
 						spell1.spell_Size = 2
-						spell1.hp = 5
+						spell1.spell_hp = 5
+						spell1.spear_speed = 350
 		"area":
 			match upgrades_lvl[upgrade]:
 				1:

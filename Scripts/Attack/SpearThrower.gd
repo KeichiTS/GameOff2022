@@ -14,6 +14,7 @@ var spell_damage = 10
 var spell_knockback = 0
 var spell_Size = 1
 var spell_hp = 1
+var spear_speed = 100
 
 func _ready():
 	cast()
@@ -47,6 +48,7 @@ func _on_ThrowTimer_timeout():
 		spellcast.attack_size = spell_Size
 		spellcast.damage = spell_damage
 		spellcast.hp = spell_hp
+		spellcast.speed = spear_speed
 		
 		add_child(spellcast)
 		spellcast.set_as_toplevel(true)
