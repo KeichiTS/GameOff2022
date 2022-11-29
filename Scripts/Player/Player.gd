@@ -186,9 +186,11 @@ func level_up(upgrade):
 		upgrades_lvl[upgrade]+=1
 		if upgrades_lvl[upgrade] < 5:
 			update_stats(upgrade)
+		if !upgrades.has(upgrade):
 			upgrades.append(upgrade)
+			
 	print(upgrades)
-	print(upgrade, upgrades_lvl[upgrade])
+
 
 func update_stats(upgrade):
 	match upgrade:
@@ -200,25 +202,28 @@ func update_stats(upgrade):
 						add_child(weapon)
 				2:
 					if get_node("SwordAttack"):
-						sword = get_node("SwordAttack")
-						sword.damage = 20
+						var sword1 = get_node("SwordAttack")
+						sword1.damage = 20
 				3:
 					if get_node("SwordAttack"):
-						sword = get_node("SwordAttack")
-						sword.damage = 50
-						sword.animation.playback_speed = 1.5
+						var sword1 = get_node("SwordAttack")
+						sword1.damage = 50
+						sword1.knockback_amount = 300
+						sword1.animation.playback_speed = 1.5
 				4:
 					if get_node("SwordAttack"):
-						sword = get_node("SwordAttack")
-						sword.damage = 50
-						sword.animation.playback_speed = 1.5
-						sword.scale = Vector2(1.5,1.5)
+						var sword1 = get_node("SwordAttack")
+						sword1.damage = 50
+						sword1.knockback_amount = 300
+						sword1.animation.playback_speed = 3
+						sword1.scale = Vector2(1.5,1.5)
 				5:
 					if get_node("SwordAttack"):
-						sword = get_node("SwordAttack")
-						sword.damage = 100
-						sword.animation.playback_speed = 3
-						sword.scale = Vector2(3,3)
+						var sword1 = get_node("SwordAttack")
+						sword1.damage = 100
+						sword1.knockback_amount = 500
+						sword1.animation.playback_speed = 5
+						sword1.scale = Vector2(3,3)
 		"spell":
 			match upgrades_lvl[upgrade]:
 				1:
@@ -226,13 +231,47 @@ func update_stats(upgrade):
 						var weapon = spell.instance()
 						add_child(weapon)
 				2:
-					pass
+					if get_node("SpellCaster"):
+						var spell1 = get_node("SpellCaster")
+						
+						spell1.spell_baseamo = 1
+						spell1.spell_casttime = 2
+						spell1.spell_charge_time = 1
+						spell1.spell_damage = 30
+						spell1.spell_knockback = 10
+						
+						
+						
 				3:
-					pass
+					if get_node("SpellCaster"):
+						var spell1 = get_node("SpellCaster")
+						
+						spell1.spell_baseamo = 2
+						spell1.spell_casttime = 2
+						spell1.spell_charge_time = 1
+						spell1.spell_damage = 30
+						spell1.spell_knockback = 100
+						spell1.spell_Size = 2
+						
 				4:
-					pass
+					if get_node("SpellCaster"):
+						var spell1 = get_node("SpellCaster")
+						spell1.spell_baseamo = 2
+						spell1.spell_casttime = 1
+						spell1.spell_charge_time = .2
+						spell1.spell_damage = 100
+						spell1.spell_knockback = 100
+						spell1.spell_Size = 2
+					
 				5:
-					pass
+					if get_node("SpellCaster"):
+						var spell1 = get_node("SpellCaster")
+						spell1.spell_baseamo = 5
+						spell1.spell_casttime = .5
+						spell1.spell_charge_time = .2
+						spell1.spell_damage = 100
+						spell1.spell_knockback = 200
+						spell1.spell_Size = 2
 		"spear":
 			match upgrades_lvl[upgrade]:
 				1:
@@ -261,18 +300,7 @@ func update_stats(upgrade):
 					pass
 				5:
 					pass
-		"area_size":
-			match upgrades_lvl[upgrade]:
-				1:
-					pass
-				2:
-					pass
-				3:
-					pass
-				4:
-					pass
-				5:
-					pass
+		
 		"boots":
 			match upgrades_lvl[upgrade]:
 				1:
