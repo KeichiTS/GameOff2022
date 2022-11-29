@@ -132,7 +132,8 @@ func get_enemy():
 
 
 func _on_HurtBox_hurt(damage, _angle, _knockback):
-	hp-=damage
+	var reduced_damage = clamp(damage - armor, 1, damage)
+	hp-=reduced_damage
 	print(hp)
 	if hp <= 0:
 		PLAYER.Money+= gold
@@ -349,12 +350,12 @@ func update_stats(upgrade):
 		"armor":
 			match upgrades_lvl[upgrade]:
 				1:
-					pass
+					armor = 1
 				2:
-					pass
+					armor = 2
 				3:
-					pass
+					armor = 3
 				4:
-					pass
+					armor = 4
 				5:
-					pass
+					armor = 5

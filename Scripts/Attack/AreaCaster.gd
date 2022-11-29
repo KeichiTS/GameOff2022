@@ -6,16 +6,21 @@ var casttime = 5
 var chargetime = 5
 
 var area_to_Cast = preload("res://Scenes/Attack/AreaMagic.tscn")
+var player = null
 
 func _ready():
 	randomize()
 	cast()
+	player = get_parent()
 
 func cast():
 	$CastTimer.wait_time = casttime
 	$ChargeTimer.wait_time = chargetime
 	$CastTimer.start()
 	$ChargeTimer.start()
+	
+func _physics_process(delta):
+	global_position = player.global_position
 
 func _on_ChargeTimer_timeout():
 	if charges < basecharges:

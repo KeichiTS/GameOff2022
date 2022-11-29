@@ -43,7 +43,6 @@ enemy_movement = 50
 [node name="Sprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 
 [node name="HurtBox" parent="." instance=ExtResource( 1 )]
@@ -66,6 +65,7 @@ text = "hp : []"
 [node name="HitBox" parent="." instance=ExtResource( 4 )]
 collision_layer = 2
 collision_mask = 0
+damage = 5
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource( 3 )
