@@ -279,13 +279,43 @@ func update_stats(upgrade):
 						var weapon = spear.instance()
 						add_child(weapon)
 				2:
-					pass
+					if get_node("SpearThrower"):
+						var spell1 = get_node("SpearThrower")
+						
+						spell1.spell_baseamo = 1
+						spell1.spell_casttime = 2
+						spell1.spell_charge_time = 1
+						spell1.spell_damage = 30
+						spell1.spell_knockback = 10
 				3:
-					pass
+					if get_node("SpearThrower"):
+						var spell1 = get_node("SpearThrower")
+						
+						spell1.spell_baseamo = 2
+						spell1.spell_casttime = 2
+						spell1.spell_charge_time = 1
+						spell1.spell_damage = 30
+						spell1.spell_knockback = 10
 				4:
-					pass
+					if get_node("SpearThrower"):
+						var spell1 = get_node("SpearThrower")
+						
+						spell1.spell_baseamo = 5
+						spell1.spell_casttime = 1
+						spell1.spell_charge_time = 1
+						spell1.spell_damage = 50
+						spell1.spell_knockback = 10
+						spell1.hp = 2
 				5:
-					pass
+					if get_node("SpearThrower"):
+						var spell1 = get_node("SpearThrower")
+						spell1.spell_baseamo = 5
+						spell1.spell_casttime = .5
+						spell1.spell_charge_time = .2
+						spell1.spell_damage = 100
+						spell1.spell_knockback = 200
+						spell1.spell_Size = 2
+						spell1.hp = 5
 		"area":
 			match upgrades_lvl[upgrade]:
 				1:

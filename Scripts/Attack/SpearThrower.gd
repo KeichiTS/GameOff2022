@@ -8,12 +8,12 @@ var spell = preload("res://Scenes/Attack/Spear.tscn")
 var spell_level = 1
 var spell_ammo = 1
 var spell_baseamo = 1
-var spell_casttime = 1
+var spell_casttime = 2
 var spell_charge_time = 1
 var spell_damage = 10
 var spell_knockback = 0
 var spell_Size = 1
-
+var spell_hp = 1
 
 func _ready():
 	cast()
@@ -46,6 +46,7 @@ func _on_ThrowTimer_timeout():
 		spellcast.knockback_amount = spell_knockback
 		spellcast.attack_size = spell_Size
 		spellcast.damage = spell_damage
+		spellcast.hp = spell_hp
 		
 		add_child(spellcast)
 		spellcast.set_as_toplevel(true)
