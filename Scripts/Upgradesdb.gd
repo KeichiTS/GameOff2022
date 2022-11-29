@@ -5,7 +5,6 @@ var upgrades  = [
 	"spell",
 	"spear",
 	"area",
-	"area_size",
 	"health",
 	"boots",
 	"armor"

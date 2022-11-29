@@ -4,7 +4,7 @@ onready var front_sprite = null
 onready var back_sprite = null
 onready var hp = 100
 var armor = 0
-
+var area_size = 1
 
 var char_info = null
 
@@ -23,7 +23,6 @@ var upgrades_lvl = {
 	"spear":0,
 	"area":0,
 	"health":0,
-	"area_size":0,
 	"boots":0,
 	"armor":0
 }
@@ -179,35 +178,53 @@ func _on_ColectLoot_area_entered(area):
 			$GUI/Control/Money.text = str("Money : ",gold)
 
 func level_up(upgrade):
-	if upgrade != "health":
-		if upgrades.has(upgrade) and upgrades_lvl[upgrade] < 5:
-			upgrades_lvl[upgrade]+=1
-			update_stats(upgrade)
-		else:
-			upgrades.append(upgrade)
-	else:
+
+	if upgrade == "health":
 		hp+=20
 		hp = clamp(hp,hp,100)
+	else:
+		upgrades_lvl[upgrade]+=1
+		if upgrades_lvl[upgrade] < 5:
+			update_stats(upgrade)
+			upgrades.append(upgrade)
 	print(upgrades)
+	print(upgrade, upgrades_lvl[upgrade])
 
 func update_stats(upgrade):
 	match upgrade:
 		"sword":
 			match upgrades_lvl[upgrade]:
 				1:
-					pass
+					if !upgrades.has(upgrade):
+						var weapon = sword.instance()
+						add_child(weapon)
 				2:
-					pass
+					if get_node("SwordAttack"):
+						sword = get_node("SwordAttack")
+						sword.damage = 20
 				3:
-					pass
+					if get_node("SwordAttack"):
+						sword = get_node("SwordAttack")
+						sword.damage = 50
+						sword.animation.playback_speed = 1.5
 				4:
-					pass
+					if get_node("SwordAttack"):
+						sword = get_node("SwordAttack")
+						sword.damage = 50
+						sword.animation.playback_speed = 1.5
+						sword.scale = Vector2(1.5,1.5)
 				5:
-					pass
+					if get_node("SwordAttack"):
+						sword = get_node("SwordAttack")
+						sword.damage = 100
+						sword.animation.playback_speed = 3
+						sword.scale = Vector2(3,3)
 		"spell":
 			match upgrades_lvl[upgrade]:
 				1:
-					pass
+					if !upgrades.has(upgrade):
+						var weapon = spell.instance()
+						add_child(weapon)
 				2:
 					pass
 				3:
@@ -219,7 +236,9 @@ func update_stats(upgrade):
 		"spear":
 			match upgrades_lvl[upgrade]:
 				1:
-					pass
+					if !upgrades.has(upgrade):
+						var weapon = spear.instance()
+						add_child(weapon)
 				2:
 					pass
 				3:
@@ -231,7 +250,9 @@ func update_stats(upgrade):
 		"area":
 			match upgrades_lvl[upgrade]:
 				1:
-					pass
+					if !upgrades.has(upgrade):
+						var weapon = area.instance()
+						add_child(weapon)
 				2:
 					pass
 				3:
@@ -255,15 +276,15 @@ func update_stats(upgrade):
 		"boots":
 			match upgrades_lvl[upgrade]:
 				1:
-					pass
+					movement_speed = 110
 				2:
-					pass
+					movement_speed = 120
 				3:
-					pass
+					movement_speed = 150
 				4:
-					pass
+					movement_speed = 200
 				5:
-					pass
+					movement_speed = 250
 		"armor":
 			match upgrades_lvl[upgrade]:
 				1:
