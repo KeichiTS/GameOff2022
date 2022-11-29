@@ -22,7 +22,7 @@ var upgrades_lvl = {
 	"spell":0,
 	"spear":0,
 	"area":0,
-	"healt":0,
+	"health":0,
 	"area_size":0,
 	"boots":0,
 	"armor":0
@@ -180,9 +180,15 @@ func _on_ColectLoot_area_entered(area):
 
 func level_up(upgrade):
 	if upgrade != "health":
-		upgrades.append(upgrade)
+		if upgrades.has(upgrade) and upgrades_lvl[upgrade] < 5:
+			upgrades_lvl[upgrade]+=1
+			update_stats()
+		else:
+			upgrades.append(upgrade)
 	else:
 		hp+=20
 		hp = clamp(hp,hp,100)
 	print(upgrades)
 
+func update_stats():
+	pass

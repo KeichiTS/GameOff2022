@@ -20,18 +20,14 @@ func choose_upgrade(player, player_upgrades : Array):
 	possible_upgrades.shuffle()
 	var upgrade = possible_upgrades[0]
 	
-	if player.upgrades_lvl[upgrade] >= 5:
-		possible_upgrades.erase(upgrade)
-		upgrade = "health"		
-	
+
 	if player_upgrades.size() < 4:
 		return upgrade
 		
 	else:
-		player_upgrades.shuffle()
-		upgrade = player_upgrades[0]
-		if !player.upgrades_lvl[player_upgrades[0]] < 5:
-			player_upgrades.shuffle()
-		upgrade = player_upgrades[0]
-		
+		possible_upgrades = player_upgrades
+		possible_upgrades.append("health")
+		possible_upgrades.shuffle()
+		upgrade = possible_upgrades[0]
+				
 		return upgrade
