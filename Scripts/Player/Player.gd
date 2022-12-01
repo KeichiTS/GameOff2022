@@ -43,6 +43,9 @@ var enemy_near = []
 
 
 func _ready():
+	
+	$HealthBar.max_value = hp
+	$HealthBar.value = hp
 	char_info = PLAYER.Party_member
 	
 	front_sprite = char_info.front_sprite
@@ -134,6 +137,7 @@ func get_enemy():
 func _on_HurtBox_hurt(damage, _angle, _knockback):
 	var reduced_damage = clamp(damage - armor, 1, damage)
 	hp-=reduced_damage
+	$HealthBar.value = hp
 	print(hp)
 	if hp <= 0:
 		PLAYER.Money+= gold
@@ -183,6 +187,7 @@ func level_up(upgrade):
 	if upgrade == "health":
 		hp+=20
 		hp = clamp(hp,hp,100)
+		$HealthBar.value = hp
 	elif upgrade != "health":
 		upgrades_lvl[upgrade]+=1
 		if upgrades_lvl[upgrade] < 5:
