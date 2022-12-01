@@ -30,21 +30,21 @@ var dialog
 
 
 func _ready():
-	if PLAYER.Level >= 10 and PLAYER.Level <= 20:
-		PLAYER.dialog_to_show = 1
+#	if PLAYER.Level >= 10 and PLAYER.Level <= 20:
+#		PLAYER.dialog_to_show = 1
 
-	if PLAYER.dialog_to_show == 0 and PLAYER.dialog_showed == 0:
-		dialog = text1
-		PLAYER.dialog_showed = 1
+#	if PLAYER.dialog_to_show == 0 and PLAYER.dialog_showed == 0:
+#		dialog = text1
+#		PLAYER.dialog_showed = 1
 		
-	elif PLAYER.dialog_to_show == 1 and PLAYER.dialog_showed == 1:
-		dialog = text2
-		PLAYER.dialog_showed = 2
-	else:
-		get_parent().on_dialog = false
-		get_parent().active_buttons()
-		queue_free()
-
+#	elif PLAYER.dialog_to_show == 1 and PLAYER.dialog_showed == 1:
+#		dialog = text2
+#		PLAYER.dialog_showed = 2
+#	else:
+#		get_parent().on_dialog = false
+#		get_parent().active_buttons()
+#		queue_free()
+	pass
 
 func _process(delta):
 	
@@ -61,10 +61,8 @@ func _process(delta):
 		counter += 1
 		$wait_timer.start()
 		
-		print(counter)
 		
 	if counter >= len(dialog) + 1:
-		print("entrou")
 		get_parent().on_dialog = false
 		get_parent().active_buttons()
 		queue_free()

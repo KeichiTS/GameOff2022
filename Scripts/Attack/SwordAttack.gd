@@ -23,4 +23,4 @@ func _physics_process(_delta):
 		Vector2.LEFT:
 			rotation_degrees = 90
 		Vector2.RIGHT:
-			rotation_degrees = 270	
+			rotation_degrees = 270

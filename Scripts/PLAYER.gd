@@ -1,13 +1,23 @@
 extends Node
 
-#Player values
-var Level = 0
-var HP = 100
-var Money = 600
-var EXP = 300
-var Damage = 1
 
-var Party_member : CharInfo = load("res://Resources/Mage.tres")
+#Game Values
+var EXP = 300
+var Money = 600
+
+#Warrior values
+var Level1 = 1
+var HP1 = 100
+var Damage1 = 1
+var Speed1 = 100
+
+#Mage Values
+var Level2 = 1
+var HP2 = 100
+var Damage2 = 1
+var Speed2 = 100
+
+var Party_member : CharInfo = load("res://Resources/Warrior.tres")
 
 #Equip values
 var Equip1 = false

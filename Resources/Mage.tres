@@ -9,5 +9,5 @@ script = ExtResource( 1 )
 name = "Mage"
 front_sprite = ExtResource( 3 )
 back_sprite = ExtResource( 2 )
-weapon = "spell"
+weapon = "area"
 lore = ""

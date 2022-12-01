@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Battle/EnemySpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Resources/Slime2.tres" type="Resource" id=3]
+[ext_resource path="res://Resources/Slime.tres" type="Resource" id=4]
 
 [node name="BattleGround" type="Node2D"]
+position = Vector2( 0, 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 166, 163 )
 
 [node name="EnemySpawner" parent="." instance=ExtResource( 2 )]
+spawns = [ ExtResource( 4 ), ExtResource( 3 ) ]
 
 [node name="Loot" type="Node2D" parent="."]

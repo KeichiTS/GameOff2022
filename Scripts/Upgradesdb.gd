@@ -10,7 +10,9 @@ var upgrades  = [
 	"armor"
 ]
 
-
+func _ready():
+	$HUD/Money.text = "Money: " + str(PLAYER.Money)
+	$HUD/EXP.text = "EXP: " + str(PLAYER.EXP)
 
 
 func choose_upgrade(player, player_upgrades : Array):
@@ -33,10 +35,6 @@ func choose_upgrade(player, player_upgrades : Array):
 				
 		return upgrade
 
-
-func _on_Button_pressed():
-	PLAYER.Level += 1 
-	$HUD/Level.text = "Level: " + str(PLAYER.Level)
 
 
 func _on_Button2_pressed():

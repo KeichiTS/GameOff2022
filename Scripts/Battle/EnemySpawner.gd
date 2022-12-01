@@ -29,7 +29,7 @@ func _on_Time_timeout():
 					get_parent().add_child(enemy_to_spawn)
 
 func get_random_pos(up = true, down = true, left = true, right = true):
-	var vpr = get_viewport_rect().size * rand_range(1.1, 1.4)
+	var vpr = get_viewport_rect().size * rand_range(1.8, 2.4)
 	var top_left = Vector2(player.global_position.x - vpr.x/2, player.global_position.y - vpr.y/2)
 	var bottom_right = Vector2(player.global_position.x + vpr.x/2, player.global_position.y + vpr.y/2)
 	var pos_side = []

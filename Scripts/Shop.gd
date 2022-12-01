@@ -2,11 +2,9 @@ extends Node
 
 
 func _ready():
-	$HUD/Level.text = "Level: " + str(PLAYER.Level)
-	$HUD/HP.text = "HP: " + str(PLAYER.HP)
 	$HUD/Money.text = "Money: " + str(PLAYER.Money)
 	$HUD/EXP.text = "EXP: " + str(PLAYER.EXP)
-	$HUD/Damage.text = "Damage: " + str(PLAYER.Damage)
+
 	
 	if PLAYER.Buy_Equip1 == true:
 		$Buttons/Buy_1.disabled
