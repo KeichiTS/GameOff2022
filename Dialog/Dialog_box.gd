@@ -30,6 +30,10 @@ var dialog
 
 
 func _ready():
+	queue_free() ###APAGAR AQUI QUANDO FOR USAR O DIALOGO
+
+
+
 #	if PLAYER.Level >= 10 and PLAYER.Level <= 20:
 #		PLAYER.dialog_to_show = 1
 
@@ -47,7 +51,7 @@ func _ready():
 	pass
 
 func _process(delta):
-	
+
 	if counter == 0 :
 		timeout = false
 		load_dialog()

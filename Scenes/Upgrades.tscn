@@ -1,14 +1,10 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Scripts/Upgradesdb.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Upgrades.gd" type="Script" id=1]
 [ext_resource path="res://Font/tenderness.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://Sprites/Text_box.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/warrior_front.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/mage_front.png" type="Texture" id=5]
-
-[sub_resource type="DynamicFont" id=1]
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 12
@@ -44,6 +40,11 @@ size = 25
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=6]
+size = 12
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
 [node name="UpgradesDB" type="Node"]
 script = ExtResource( 1 )
 
@@ -52,27 +53,7 @@ margin_right = 800.0
 margin_bottom = 600.0
 color = Color( 0.603922, 0.690196, 0.541176, 1 )
 
-[node name="HUD" type="Node" parent="."]
-
-[node name="Money" type="Label" parent="HUD"]
-margin_left = 16.0
-margin_top = 47.0
-margin_right = 91.0
-margin_bottom = 61.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "Money: 000"
-
-[node name="EXP" type="Label" parent="HUD"]
-margin_left = 16.0
-margin_top = 65.0
-margin_right = 91.0
-margin_bottom = 79.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "EXP: 000"
-
-[node name="Button2" type="Button" parent="."]
+[node name="Return" type="Button" parent="."]
 margin_left = 643.0
 margin_top = 544.0
 margin_right = 762.0
@@ -281,4 +262,24 @@ custom_styles/disabled = SubResource( 2 )
 custom_styles/normal = SubResource( 2 )
 text = "Up ( 00000 EXP)"
 
-[connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
+[node name="HUD" type="Node" parent="."]
+
+[node name="Money" type="Label" parent="HUD"]
+margin_left = 16.0
+margin_top = 47.0
+margin_right = 91.0
+margin_bottom = 61.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "Money: 000"
+
+[node name="EXP" type="Label" parent="HUD"]
+margin_left = 16.0
+margin_top = 65.0
+margin_right = 91.0
+margin_bottom = 79.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "EXP: 000"
+
+[connection signal="pressed" from="Return" to="." method="_on_Button2_pressed"]

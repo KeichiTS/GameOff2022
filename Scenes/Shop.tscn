@@ -1,13 +1,27 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Shop.gd" type="Script" id=1]
 [ext_resource path="res://Font/tenderness.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Sprites/Text_box.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/warrior_front.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/mage_front.png" type="Texture" id=5]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=4]
+size = 40
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="DynamicFont" id=5]
+size = 25
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 12
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.776471, 0.737255, 0.607843, 1 )
 border_width_left = 4
 border_width_top = 4
@@ -26,8 +40,34 @@ shadow_color = Color( 0, 0, 0, 0.690196 )
 shadow_size = 3
 shadow_offset = Vector2( 2, 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=8]
+size = 12
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 12
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.776471, 0.737255, 0.607843, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.27451, 0.25098, 0.180392, 1 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+expand_margin_top = 4.0
+expand_margin_bottom = 4.0
+shadow_color = Color( 0, 0, 0, 0.690196 )
+shadow_size = 3
+shadow_offset = Vector2( 2, 1 )
 
 [node name="Shop" type="Node"]
 script = ExtResource( 1 )
@@ -37,68 +77,205 @@ margin_right = 800.0
 margin_bottom = 600.0
 color = Color( 0.603922, 0.690196, 0.541176, 1 )
 
-[node name="Buttons" type="Node" parent="."]
+[node name="Warrior" type="Node2D" parent="."]
+position = Vector2( -16, 87 )
 
-[node name="Return" type="Button" parent="Buttons"]
-margin_left = 207.0
-margin_top = 462.0
-margin_right = 370.0
-margin_bottom = 512.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-custom_styles/normal = SubResource( 2 )
-text = "Return"
+[node name="Box" type="Sprite" parent="Warrior"]
+position = Vector2( 143, 260 )
+texture = ExtResource( 3 )
 
-[node name="Buy_1" type="Button" parent="Buttons"]
-margin_left = 62.0
-margin_top = 299.0
-margin_right = 225.0
-margin_bottom = 349.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-custom_styles/normal = SubResource( 2 )
-text = "Equip_1"
+[node name="sprite" type="Sprite" parent="Warrior/Box"]
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 4 )
+hframes = 4
 
-[node name="Price" type="Label" parent="Buttons/Buy_1"]
-margin_right = 40.0
-margin_bottom = 14.0
+[node name="Name" type="Label" parent="Warrior"]
+margin_left = 52.0
+margin_top = 115.0
+margin_right = 167.0
+margin_bottom = 156.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "Money: 100"
+custom_fonts/font = SubResource( 4 )
+text = "Lapis"
+valign = 3
 
-[node name="Buy_2" type="Button" parent="Buttons"]
-margin_left = 317.0
-margin_top = 258.0
-margin_right = 480.0
-margin_bottom = 308.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-custom_styles/normal = SubResource( 2 )
-text = "Equip_2"
+[node name="Info" type="Node2D" parent="Warrior"]
+position = Vector2( -224, 174 )
 
-[node name="Price" type="Label" parent="Buttons/Buy_2"]
-margin_right = 40.0
-margin_bottom = 14.0
+[node name="Special" type="Label" parent="Warrior/Info"]
+margin_left = 254.0
+margin_top = 200.0
+margin_right = 330.0
+margin_bottom = 226.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "Money: 200"
+custom_fonts/font = SubResource( 5 )
+text = "Spc: Locked"
+valign = 3
 
-[node name="Buy_3" type="Button" parent="Buttons"]
-margin_left = 542.0
-margin_top = 313.0
-margin_right = 705.0
-margin_bottom = 363.0
+[node name="Armor" type="Label" parent="Warrior/Info"]
+margin_left = 254.0
+margin_top = 230.0
+margin_right = 330.0
+margin_bottom = 256.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-custom_styles/normal = SubResource( 2 )
-text = "Equip_3"
+custom_fonts/font = SubResource( 5 )
+text = "Armor: 00"
+valign = 3
 
-[node name="Price" type="Label" parent="Buttons/Buy_3"]
-margin_right = 40.0
-margin_bottom = 14.0
+[node name="Speed" type="Label" parent="Warrior/Info"]
+margin_left = 254.0
+margin_top = 260.0
+margin_right = 330.0
+margin_bottom = 286.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "Money: 300"
+custom_fonts/font = SubResource( 5 )
+text = "Boots: 00"
+valign = 3
+
+[node name="Upgrades" type="Node2D" parent="Warrior"]
+position = Vector2( -224, 174 )
+
+[node name="HP" type="Button" parent="Warrior/Upgrades"]
+margin_left = 413.0
+margin_top = 200.0
+margin_right = 497.0
+margin_bottom = 221.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 7 )
+text = "Up ( 00000 EXP)"
+
+[node name="Damage" type="Button" parent="Warrior/Upgrades"]
+margin_left = 413.0
+margin_top = 230.0
+margin_right = 497.0
+margin_bottom = 251.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 7 )
+text = "Up ( 00000 EXP)"
+
+[node name="Speed" type="Button" parent="Warrior/Upgrades"]
+margin_left = 413.0
+margin_top = 260.0
+margin_right = 497.0
+margin_bottom = 281.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 7 )
+text = "Up ( 00000 EXP)"
+
+[node name="Mage" type="Node2D" parent="."]
+position = Vector2( 421, -111 )
+
+[node name="Box" type="Sprite" parent="Mage"]
+position = Vector2( 143, 260 )
+texture = ExtResource( 3 )
+
+[node name="sprite" type="Sprite" parent="Mage/Box"]
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 5 )
+hframes = 4
+
+[node name="Name" type="Label" parent="Mage"]
+margin_left = 43.0
+margin_top = 120.0
+margin_right = 158.0
+margin_bottom = 161.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Lazuli"
+valign = 3
+
+[node name="Info" type="Node2D" parent="Mage"]
+position = Vector2( -224, 174 )
+
+[node name="Special" type="Label" parent="Mage/Info"]
+margin_left = 254.0
+margin_top = 200.0
+margin_right = 330.0
+margin_bottom = 226.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Spc: Locked"
+valign = 3
+
+[node name="Armor" type="Label" parent="Mage/Info"]
+margin_left = 254.0
+margin_top = 230.0
+margin_right = 330.0
+margin_bottom = 256.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Armor: 00"
+valign = 3
+
+[node name="Speed" type="Label" parent="Mage/Info"]
+margin_left = 254.0
+margin_top = 260.0
+margin_right = 330.0
+margin_bottom = 286.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "Boots: 00"
+valign = 3
+
+[node name="Upgrades" type="Node2D" parent="Mage"]
+position = Vector2( -224, 174 )
+
+[node name="HP" type="Button" parent="Mage/Upgrades"]
+margin_left = 413.0
+margin_top = 200.0
+margin_right = 497.0
+margin_bottom = 221.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 7 )
+text = "Up ( 00000 EXP)"
+
+[node name="Damage" type="Button" parent="Mage/Upgrades"]
+margin_left = 413.0
+margin_top = 230.0
+margin_right = 497.0
+margin_bottom = 251.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 7 )
+text = "Up ( 00000 EXP)"
+
+[node name="Speed" type="Button" parent="Mage/Upgrades"]
+margin_left = 413.0
+margin_top = 260.0
+margin_right = 497.0
+margin_bottom = 281.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 7 )
+text = "Up ( 00000 EXP)"
 
 [node name="HUD" type="Node" parent="."]
 
@@ -108,7 +285,7 @@ margin_top = 47.0
 margin_right = 91.0
 margin_bottom = 61.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 8 )
 text = "Money: 000"
 
 [node name="EXP" type="Label" parent="HUD"]
@@ -117,10 +294,21 @@ margin_top = 65.0
 margin_right = 91.0
 margin_bottom = 79.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 8 )
 text = "EXP: 000"
 
-[connection signal="pressed" from="Buttons/Return" to="." method="_on_Return_pressed"]
-[connection signal="pressed" from="Buttons/Buy_1" to="." method="_on_Buy_1_pressed"]
-[connection signal="pressed" from="Buttons/Buy_2" to="." method="_on_Buy_2_pressed"]
-[connection signal="pressed" from="Buttons/Buy_3" to="." method="_on_Buy_3_pressed"]
+[node name="Return" type="Button" parent="."]
+margin_left = 643.0
+margin_top = 544.0
+margin_right = 762.0
+margin_bottom = 564.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 9 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 10 )
+text = "return"
+
+[connection signal="pressed" from="Return" to="." method="_on_Return_pressed"]

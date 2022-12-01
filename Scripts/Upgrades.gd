@@ -1,25 +1,40 @@
 extends Node
 
+var upgrades  = [
+	"sword", 
+	"spell",
+	"spear",
+	"area",
+	"health",
+	"boots",
+	"armor"
+]
 
 func _ready():
-	$HUD/Level.text = "Level: " + str(PLAYER.Level)
-	$HUD/HP.text = "HP: " + str(PLAYER.HP)
 	$HUD/Money.text = "Money: " + str(PLAYER.Money)
 	$HUD/EXP.text = "EXP: " + str(PLAYER.EXP)
-	$HUD/Damage.text = "Damage: " + str(PLAYER.Damage)
+
+func choose_upgrade(player, player_upgrades : Array):
+
+	randomize()	
+	var possible_upgrades = upgrades
+	possible_upgrades.shuffle()
+	var upgrade = possible_upgrades[0]
+	
+
+	if player_upgrades.size() < 4:
+		return upgrade
+		
+	else:
+		var possible_updates2 = ["health"]
+		for itens in player_upgrades:
+			possible_updates2.append(itens)
+		possible_updates2.shuffle()
+		upgrade = possible_updates2[0]
+				
+		return upgrade
 
 
-func _on_Upgrade_pressed():
-	if PLAYER.EXP >= 100:
-		PLAYER.EXP -= 100
-		PLAYER.Level += 1 
-		PLAYER.Damage += 1
-		PLAYER.HP += 1
-		$HUD/Level.text = "Level: " + str(PLAYER.Level)
-		$HUD/HP.text = "HP: " + str(PLAYER.HP)
-		$HUD/EXP.text = "EXP: " + str(PLAYER.EXP)
-		$HUD/Damage.text = "Damage: " + str(PLAYER.Damage)
 
-
-func _on_Return_pressed():
+func _on_Button2_pressed():
 	get_tree().change_scene("res://Scenes/World_map.tscn")

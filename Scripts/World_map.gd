@@ -7,11 +7,11 @@ func _ready():
 	$HUD/EXP.text = "EXP: " + str(PLAYER.EXP)
 
 
-	if on_dialog == true:
-		$Buttons/Adventure.disabled = true
-		$Buttons/Inventory.disabled = true
-		$Buttons/Shop.disabled = true
-		$Buttons/Upgrades.disabled = true 
+#	if on_dialog == true:
+#		$Buttons/Adventure.disabled = true
+#		$Buttons/Inventory.disabled = true
+#		$Buttons/Shop.disabled = true
+#		$Buttons/Upgrades.disabled = true 
 
 func _on_Adventure_pressed():
 	get_tree().change_scene("res://Scenes/Battle/BattleGround.tscn")

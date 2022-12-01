@@ -10,9 +10,6 @@ var upgrades  = [
 	"armor"
 ]
 
-func _ready():
-	$HUD/Money.text = "Money: " + str(PLAYER.Money)
-	$HUD/EXP.text = "EXP: " + str(PLAYER.EXP)
 
 
 func choose_upgrade(player, player_upgrades : Array):

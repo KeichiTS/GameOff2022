@@ -50,36 +50,6 @@ custom_fonts/font = SubResource( 1 )
 custom_styles/normal = SubResource( 2 )
 text = "Return"
 
-[node name="Equip_1" type="Button" parent="Buttons"]
-margin_left = 62.0
-margin_top = 299.0
-margin_right = 225.0
-margin_bottom = 349.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-custom_styles/normal = SubResource( 2 )
-text = "Equip_1"
-
-[node name="Equip_2" type="Button" parent="Buttons"]
-margin_left = 317.0
-margin_top = 258.0
-margin_right = 480.0
-margin_bottom = 308.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-custom_styles/normal = SubResource( 2 )
-text = "Equip_2"
-
-[node name="Equip_3" type="Button" parent="Buttons"]
-margin_left = 542.0
-margin_top = 313.0
-margin_right = 705.0
-margin_bottom = 363.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-custom_styles/normal = SubResource( 2 )
-text = "Equip_3"
-
 [node name="HUD" type="Node" parent="."]
 
 [node name="Money" type="Label" parent="HUD"]
@@ -131,8 +101,5 @@ custom_styles/normal = SubResource( 2 )
 text = "Mage"
 
 [connection signal="pressed" from="Buttons/Return" to="." method="_on_Return_pressed"]
-[connection signal="pressed" from="Buttons/Equip_1" to="." method="_on_Equip_1_pressed"]
-[connection signal="pressed" from="Buttons/Equip_2" to="." method="_on_Equip_2_pressed"]
-[connection signal="pressed" from="Buttons/Equip_3" to="." method="_on_Equip_3_pressed"]
 [connection signal="pressed" from="Party/Warrior" to="Party" method="_on_Warrior_pressed"]
 [connection signal="pressed" from="Party/Mage" to="Party" method="_on_Mage_pressed"]
