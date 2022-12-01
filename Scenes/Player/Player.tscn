@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Sprites/warrior_front.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=2]
@@ -6,6 +6,13 @@
 [ext_resource path="res://Scenes/boxes/HurtBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Sprites/exp_Grid.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/exp_fill.png" type="Texture" id=6]
+[ext_resource path="res://Resources/Player.gdshader" type="Shader" id=7]
+
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+shader = ExtResource( 7 )
+shader_param/flash_color = Color( 0.988235, 0.752941, 0.752941, 1 )
+shader_param/flash_modifer = 0.0
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 36.0
@@ -24,11 +31,13 @@ radius = 350.721
 radius = 56.0892
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
+use_parent_material = true
 collision_layer = 3
 collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 6 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 hframes = 4
@@ -65,6 +74,7 @@ zoom = Vector2( 1.5, 1.5 )
 smoothing_enabled = true
 
 [node name="GrabLoot" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8
 
@@ -72,6 +82,7 @@ collision_mask = 8
 shape = SubResource( 4 )
 
 [node name="ColectLoot" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8
 
@@ -158,11 +169,16 @@ stretch_margin_top = 3
 stretch_margin_right = 3
 stretch_margin_bottom = 3
 
+[node name="DamageTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="timeout" from="AnimateSpriteTimer" to="." method="_on_AnimateSpriteTimer_timeout"]
 [connection signal="body_entered" from="EnemyDetection" to="." method="_on_EnemyDetection_body_entered"]
 [connection signal="body_exited" from="EnemyDetection" to="." method="_on_EnemyDetection_body_exited"]
 [connection signal="hurt" from="HurtBox" to="." method="_on_HurtBox_hurt"]
 [connection signal="area_entered" from="GrabLoot" to="." method="_on_GrabLoot_area_entered"]
 [connection signal="area_entered" from="ColectLoot" to="." method="_on_ColectLoot_area_entered"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_DamageTimer_timeout"]
 
 [editable path="HurtBox"]

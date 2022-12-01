@@ -138,11 +138,15 @@ func _on_HurtBox_hurt(damage, _angle, _knockback):
 	var reduced_damage = clamp(damage - armor, 1, damage)
 	hp-=reduced_damage
 	$HealthBar.value = hp
+	flash()
 	print(hp)
 	if hp <= 0:
 		PLAYER.Money+= gold
 		get_tree().change_scene("res://Scenes/World_map.tscn")
 
+func flash():
+	sprite.material.set_shader_param("flash_modifer",1)
+	$DamageTimer.start()
 
 func exp_to_lvlup(level):
 	return level*10
@@ -392,3 +396,7 @@ func update_stats(upgrade):
 					armor = 4
 				5:
 					armor = 5
+
+
+func _on_DamageTimer_timeout():
+	sprite.material.set_shader_param("flash_modifer",0)

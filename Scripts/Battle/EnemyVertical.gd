@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+
 export var hp = 1000
 
 export var knockback_Recovery = 20
@@ -11,6 +12,8 @@ onready var player = null
 onready var loot_base = null
 
 export var enemy_movement := 20
+
+var base_horizontal = 10
 
 var velocity = Vector2.ZERO
 
@@ -38,6 +41,7 @@ func _physics_process(delta):
 	elif direction.x < -0.1:
 		$Sprite.flip_h = false
 		
+	direction.y += base_horizontal
 	velocity = direction*enemy_movement
 	velocity += knockBack
 
@@ -64,10 +68,15 @@ func _on_HurtBox_hurt(damage, angle, knockback):
 	if hp <= 0:
 		death()
 
+
+func _on_Timer_timeout():
+	base_horizontal*=-1
+
+
+
 func flash():
-	$Sprite.material.set_shader_param("flash_modifer",1)
 	$DamageTimer.start()
-	
+	$Sprite.material.set_shader_param("flash_modifer",1)
+
 func _on_DamageTimer_timeout():
 	$Sprite.material.set_shader_param("flash_modifer",0)
-	

@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Battle/EnemySpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Battle/EnemyHorizontal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Battle/EnemyVertical.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Sprites/9c93341907274632bcf4c514288f23f2.png" type="Texture" id=5]
 
 [node name="BattleGround" type="Node2D"]
@@ -21,7 +23,7 @@ layer = -1
 scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-motion_scale = Vector2( 2, 2 )
+motion_scale = Vector2( 1.5, 1.5 )
 motion_mirroring = Vector2( 960, 720 )
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/ParallaxBackground/ParallaxLayer"]
@@ -31,3 +33,10 @@ scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 450, 450 )
 region_filter_clip = true
+
+[node name="Enemy" parent="." instance=ExtResource( 3 )]
+enemy_movement = 30
+
+[node name="Enemy2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 624, 502 )
+enemy_movement = 30
