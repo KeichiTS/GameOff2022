@@ -116,7 +116,6 @@ text = "Money"
 
 [node name="LvlUp" type="PopupPanel" parent="GUI"]
 pause_mode = 2
-visible = true
 anchor_left = 0.17
 anchor_top = 0.0666667
 anchor_right = 0.83

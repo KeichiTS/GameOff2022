@@ -5,19 +5,19 @@
 [ext_resource path="res://Scripts/Battle/Enemy.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/boxes/HitBox.tscn" type="PackedScene" id=4]
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 282, 167 )
+region = Rect2( 0, 0, 282, 170 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 2 )
-region = Rect2( 0, 167, 282, 167 )
+region = Rect2( 0, 170, 282, 170 )
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0

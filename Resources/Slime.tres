@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource( 1 )
-time_start = 0
+time_start = 60
 time_end = 300
 enemy = ExtResource( 2 )
 enemy_number = 2
